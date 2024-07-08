@@ -8,6 +8,7 @@ class BankAccount{
 
     deposit(amount){
         this.balance += amount;
+        this.recordTransaction('deposit',amount)
     }
     withdraw(amount){
         if(amount<=this.balance){
@@ -16,6 +17,7 @@ class BankAccount{
         else{
             console.log("insufficient balance")
         }
+        this.recordTransaction('withdraw',amount)
     }
 
     getAccountDetails(){
@@ -27,12 +29,21 @@ class BankAccount{
         }
     }
 
-}
+    recordTransaction(type, amount, relatedAccount = null){
+        const transaction = {
+            type,
+            amount,
+            date: new Date(),
+            relatedAccount
+        };
+        this.transactionHistory.push(transaction)
+        }
+    }
+
 
 let b1 = new BankAccount(123,"tus",100,[0,1,3]);
 
 b1.deposit(500);
 b1.withdraw(100);
-b1.getAccountDetails()
-
+b1.recordTransaction('deposit',500,'1232132');
 console.log(b1.getAccountDetails());
