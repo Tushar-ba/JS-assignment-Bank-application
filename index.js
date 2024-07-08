@@ -134,4 +134,10 @@ function deposit() {
     bankAccount.transfer(amount,recipientAccount);
   }
 
+  function addInterest(){
+    const rate = parseFloat(document.getElementById('interestRate').value);
+    bankAccount.addInterest(rate);
+    updateAccountDetails();
+  }
+
 
