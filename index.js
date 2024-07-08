@@ -39,14 +39,20 @@ class BankAccount{
         this.transactionHistory.push(transaction)
         }
 
-        transfer(amount, recipientAccount){
-            if(amount <= this.balance){
-                this.withdraw(amount);
-                recipientAccount.deposit(amount);
-                this.recordTransaction('transfer',amount,recipientAccount.accountNumber)
-            }else{
-                console.log("Insufficient funds")
-            }
+        // transfer(amount, recipientAccount){
+        //     if(amount <= this.balance){
+        //         this.withdraw(amount);
+        //         recipientAccount.deposit(amount);
+        //         this.recordTransaction('transfer',amount,recipientAccount.accountNumber)
+        //     }else{
+        //         console.log("Insufficient funds")
+        //     }
+        // }
+
+        addInterest(rate){
+            const interest = this.balance*(rate/100);
+            this.deposit(interest);
+            this.recordTransaction('interest',interest);
         }
 
 
@@ -67,5 +73,6 @@ let b1 = new BankAccount(123,"tus",100,[0,1,3]);
 b1.deposit(500);
 b1.withdraw(100);
 b1.recordTransaction('deposit',500,'1232132');
-b1.transfer('500',1234)
+// b1.transfer('500',1234)
+b1.addInterest(60)
 console.log(b1.getAccountDetails());
