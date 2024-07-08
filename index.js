@@ -101,7 +101,17 @@ function createAccount(){
     console.log(bankAccount)
 }
 
-
+function loadAccount(){
+    const accountNumber = document.getElementById('accountNumber').value;
+    bankAccount = BankAccount.loadFromLocalStorage(accountNumber);
+    if(bankAccount){
+        document.getElementById('owner').value=bankAccount.owner;
+        document.getElementById('accountInfo').style.display='block';
+    }
+    else{
+        alert('acc not found')
+    }
+}
 
 
 
