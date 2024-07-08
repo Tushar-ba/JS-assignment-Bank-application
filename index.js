@@ -79,14 +79,30 @@ class BankAccount {
   
 
 
-let b1 = new BankAccount(123,"tus",100,[0,1,3]);
+// let b1 = new BankAccount(123,"tus",100,[0,1,3]);
 
-b1.deposit(500);
-b1.withdraw(100);
-b1.recordTransaction('deposit',500,'1232132');
-// b1.transfer('500',1234)
-b1.addInterest(60)
-console.log(b1.getAccountDetails());
+// b1.deposit(500);
+// b1.withdraw(100);
+// b1.recordTransaction('deposit',500,'1232132');
+// // b1.transfer('500',1234)
+// b1.addInterest(60)
+// console.log(b1.getAccountDetails());
+
+
+let bankAccount;
+
+
+function createAccount(){
+    const accountNumber = document.getElementById('accountNumber').value;
+    const owner = document.getElementById('owner').value;
+    bankAccount = new BankAccount(accountNumber,owner);
+    bankAccount.saveToLocalStorage();
+    document.getElementById('accountInfo').style.display='block';
+    console.log(bankAccount)
+}
+
+
+
 
 
 
