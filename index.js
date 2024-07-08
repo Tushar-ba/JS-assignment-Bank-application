@@ -112,7 +112,16 @@ function loadAccount(){
         alert('acc not found')
     }
 }
+function deposit() {
+    const amount = parseFloat(document.getElementById('depositAmount').value);
+    bankAccount.deposit(amount);
+    updateAccountDetails();
+  }
 
-
+  function withdraw() {
+    const amount = parseFloat(document.getElementById('withdrawAmount').value);
+    bankAccount.withdraw(amount);
+    updateAccountDetails();
+  }
 
 
