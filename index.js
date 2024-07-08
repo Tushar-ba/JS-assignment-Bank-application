@@ -124,4 +124,14 @@ function deposit() {
     updateAccountDetails();
   }
 
+  function transfer(){
+    const recipientAccountNumber = document.getElementById('recipientAccountNumber').value;
+    const amount = parseFloat(document.getElementById('transferAmount').value);
+    let recipientAccount = new BankAccount(recipientAccountNumber)
+    if(!recipientAccount){
+        alert('recipient does not exist')
+    }
+    bankAccount.transfer(amount,recipientAccount);
+  }
+
 
