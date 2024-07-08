@@ -99,6 +99,7 @@ function createAccount(){
     bankAccount.saveToLocalStorage();
     document.getElementById('accountInfo').style.display='block';
     console.log(bankAccount)
+    updateAccountDetails();
 }
 
 function loadAccount(){
@@ -107,6 +108,7 @@ function loadAccount(){
     if(bankAccount){
         document.getElementById('owner').value=bankAccount.owner;
         document.getElementById('accountInfo').style.display='block';
+        updateAccountDetails();
     }
     else{
         alert('acc not found')
@@ -127,16 +129,18 @@ function deposit() {
   function transfer(){
     const recipientAccountNumber = document.getElementById('recipientAccountNumber').value;
     const amount = parseFloat(document.getElementById('transferAmount').value);
-    let recipientAccount = new BankAccount(recipientAccountNumber)
+    let recipientAccount = BankAccount.loadFromLocalStorage(recipientAccountNumber);
     if(!recipientAccount){
         alert('recipient does not exist')
     }
     bankAccount.transfer(amount,recipientAccount);
+    updateAccountDetails();
   }
 
   function addInterest(){
     const rate = parseFloat(document.getElementById('interestRate').value);
     bankAccount.addInterest(rate);
+    updateAccountDetails();
     updateAccountDetails();
   }
 
@@ -152,3 +156,4 @@ function deposit() {
       transactionHistory.appendChild(li);
     });
   }
+
