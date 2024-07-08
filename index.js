@@ -141,3 +141,14 @@ function deposit() {
   }
 
 
+  function updateAccountDetails() {
+    const details = bankAccount.getAccountDetails();
+    document.getElementById('accountDetails').innerText = `Account Number: ${details.accountNumber}, Owner: ${details.owner}, Balance: ${details.balance}`;
+    const transactionHistory = document.getElementById('transactionHistory');
+    transactionHistory.innerHTML = '';
+    details.transactionHistory.forEach(transaction => {
+      const li = document.createElement('li');
+      li.innerText = `${transaction.date.toLocaleString()} - ${transaction.type} - $${transaction.amount} ${transaction.relatedAccount ? `(Related Account: ${transaction.relatedAccount})` : ''}`;
+      transactionHistory.appendChild(li);
+    });
+  }
