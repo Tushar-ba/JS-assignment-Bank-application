@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Account</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .transaction-history {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bank Account</h1>
+    <div>
+      <label for="accountNumber">Account Number:</label>
+      <input type="text" id="accountNumber">
+    </div>
+    <div>
+      <label for="owner">Owner:</label>
+      <input type="text" id="owner">
+    </div>
+    <button onclick="createAccount()">Create Account</button>
+    <button onclick="loadAccount()">Load Account</button>
+
+    <div id="accountInfo" style="display: none;">
+      <h2>Account Info</h2>
+      <p id="accountDetails"></p>
+
+      <h3>Deposit</h3>
+      <input type="number" id="depositAmount" placeholder="Amount">
+      <button onclick="deposit()">Deposit</button>
+
+      <h3>Withdraw</h3>
+      <input type="number" id="withdrawAmount" placeholder="Amount">
+      <button onclick="withdraw()">Withdraw</button>
+
+      <h3>Transfer</h3>
+      <input type="text" id="recipientAccountNumber" placeholder="Recipient Account Number">
+      <input type="number" id="transferAmount" placeholder="Amount">
+      <button onclick="transfer()">Transfer</button>
+
+      <h3>Add Interest</h3>
+      <input type="number" id="interestRate" placeholder="Rate (%)">
+      <button onclick="addInterest()">Add Interest</button>
+
+      <div class="transaction-history">
+        <h3>Transaction History</h3>
+        <ul id="transactionHistory"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
